@@ -1,4 +1,5 @@
 import streamlit as st
+import pyperclip
 from csv_to_excel_2 import csv_to_excel
 
 st.title("Alles für den Kassier")
@@ -22,4 +23,6 @@ if uploaded_file:
 
   copy = st.button("Kopiere Tabelleninhalt")
   if copy:
-    df.to_clipboard(index=False, header=False)
+    pyperclip.copy(df.to_string(header=False, index= False))
+    #df.to_clipboard(index=False, header=False)
+    st.success("Text wurde kopiert")
